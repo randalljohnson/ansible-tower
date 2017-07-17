@@ -27,10 +27,13 @@ RUN apt-get install -y libpython2.7
 RUN mkdir -p /var/log/tower
 
 # Download & extract Tower tarball
-ADD http://releases.ansible.com/awx/setup/ansible-tower-setup-${ANSIBLE_TOWER_VER}.tar.gz ansible-tower-setup-${ANSIBLE_TOWER_VER}.tar.gz
+#ADD http://releases.ansible.com/awx/setup/ansible-tower-setup-${ANSIBLE_TOWER_VER}.tar.gz ansible-tower-setup-${ANSIBLE_TOWER_VER}.tar.gz
+#ADD ./ansible-tower-setup-3.1.3 ansible-tower-setup-#{ANSIBLE_TOWER_VER}
+ADD ./ansible-tower-setup-${ANSIBLE_TOWER_VER}.tar.gz ansible-tower-setup-${ANSIBLE_TOWER_VER}.tar.gz
 RUN tar xvf ansible-tower-setup-${ANSIBLE_TOWER_VER}.tar.gz \
     && rm -f ansible-tower-setup-${ANSIBLE_TOWER_VER}.tar.gz
 
+#WORKDIR /opt/ansible-tower-setup-${ANSIBLE_TOWER_VER}
 WORKDIR /opt/ansible-tower-setup-${ANSIBLE_TOWER_VER}
 ADD inventory inventory
 
